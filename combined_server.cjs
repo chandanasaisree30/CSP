@@ -38,11 +38,54 @@ mongoose.connect(process.env.MONGODB_URI, {
 .catch(err => console.error('MongoDB connection error:', err));
 
 // Root route for medication reminder UI
+// Home page
 app.get('/', (req, res) => {
-//   res.sendFile(path.join(__dirname, 'medreminder.html'));
-  res.sendFile('medreminder.html', { root: path.join(__dirname, 'public') });
+  res.sendFile('home.html', {
+    root: path.join(__dirname, 'public')
+  });
 });
 
+// Medication Reminder page
+app.get('/medreminder', (req, res) => {
+  res.sendFile('medreminder.html', {
+    root: path.join(__dirname, 'public')
+  });
+});
+
+// Services page
+app.get('/services', (req, res) => {
+  res.sendFile('services.html', {
+    root: path.join(__dirname, 'public')
+  });
+});
+
+// Contact page
+app.get('/contact', (req, res) => {
+  res.sendFile('contact.html', {
+    root: path.join(__dirname, 'public')
+  });
+});
+
+// Health Tips page
+app.get('/healthtips', (req, res) => {
+  res.sendFile('healthtips.html', {
+    root: path.join(__dirname, 'public')
+  });
+});
+
+// Hospital Locator page
+app.get('/hospital-locator', (req, res) => {
+  res.sendFile('hospital_locator.html', {
+    root: path.join(__dirname, 'public')
+  });
+});
+
+// Diagnose page
+app.get('/diagnose', (req, res) => {
+  res.sendFile('diagnose.html', {
+    root: path.join(__dirname, 'public')
+  });
+});
 // Reminder API route
 app.post('/api/reminders', async (req, res) => {
   try {
