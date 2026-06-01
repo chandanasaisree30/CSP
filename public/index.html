@@ -1,293 +1,9 @@
-<!-- <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI Chatbot</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-    <div class="chat-container">
-        <div class="chat-header">
-            <h1>AI Assistant</h1>
-        </div>
-        <div class="chat-messages" id="chat-messages">
-            <div class="message bot-message">
-                <div class="message-content">
-                    Hello! How can I help you today?
-                </div>
-            </div>
-        </div>
-        <div class="chat-input-container">
-            <form id="chat-form">
-                <input type="text" id="user-input" placeholder="Type your message here..." autocomplete="off">
-                <button type="submit">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <line x1="22" y1="2" x2="11" y2="13"></line>
-                        <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
-                    </svg>
-                </button>
-            </form>
-        </div>
-    </div>
-    <script src="client.js"></script>
-</body>
-</html>  -->
-
-<!-- public/index.html -->
-<!-- <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>AI Chatbot</title>
-  <link rel="stylesheet" href="style.css" />
-</head>
-<body>
-  <div class="chat-container">
-    <div class="chat-header">
-      <h1>AI Assistant</h1>
-    </div>
-    <div class="chat-messages" id="chat-messages">
-      <div class="message bot-message">
-        <div class="message-content">
-          Hello! How can I assist you today?
-        </div>
-      </div>
-    </div>
-    <div class="chat-input-container">
-      <form id="chat-form">
-        <input
-          type="text"
-          id="user-input"
-          placeholder="Type your message here..."
-          autocomplete="off"
-        />
-        <button type="submit">Send</button>
-      </form>
-    </div>
-  </div>
-  <script src="client.js"></script>
-</body>
-</html> -->
-<!-- /new -->
-
-    <!-- <!DOCTYPE html>
-<html>
-<head>
-  <title>HealthPlus Chatbot</title>
-  <style>
-    body {
-      font-family: "Segoe UI", sans-serif;
-      background: #f5f5f5;
-      padding: 0;
-      margin: 0;
-    }
-
-    #chatContainer {
-      max-width: 700px;
-      margin: 40px auto;
-      border: 1px solid #ccc;
-      border-radius: 8px;
-      overflow: hidden;
-      background: white;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
-    }
-
-    #chatBox {
-      height: 400px;
-      overflow-y: auto;
-      padding: 20px;
-    }
-
-    .userMsg {
-      text-align: right;
-      margin-bottom: 15px;
-      color: #000;
-      font-weight: bold;
-    }
-
-    .botMsg {
-      text-align: left;
-      background: #f0f0f0;
-      padding: 10px 15px;
-      border-radius: 5px;
-      margin-bottom: 15px;
-    }
-
-    #inputContainer {
-      display: flex;
-      border-top: 1px solid #ccc;
-    }
-
-    #userInput {
-      flex: 1;
-      padding: 15px;
-      border: none;
-      font-size: 16px;
-    }
-
-    #sendBtn {
-      padding: 15px 20px;
-      background: #ffc107;
-      border: none;
-      font-weight: bold;
-      cursor: pointer;
-    }
-
-    ul {
-      padding-left: 20px;
-      margin: 0;
-    }
-
-    ul li {
-      margin-bottom: 6px;
-    }
-  </style>
-</head>
-<body>
-
-<div id="chatContainer">
-  <div id="chatBox"></div>
-  <div id="inputContainer">
-    <input type="text" id="userInput" placeholder="Ask me anything..." />
-    <button id="sendBtn">Send</button>
-  </div>
-</div>
-
-<script src="client.js"></script>
-</body>
-</html> -->
-
-<!--
-
- <!DOCTYPE html> 
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <title>HealthPlus Chatbot</title>
-  <style>
-    body {
-      font-family: "Segoe UI", sans-serif;
-      background: #f5f5f5;
-      margin: 0;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-    }
-
-    #chatContainer {
-      width: 100%;
-      max-width: 700px;
-      height: 80vh;
-      display: flex;
-      flex-direction: column;
-      border: 1px solid #ccc;
-      border-radius: 12px;
-      background: white;
-      box-shadow: 0 0 15px rgba(0, 0, 0, 0.08);
-      overflow: hidden;
-    }
-
-    #chatBox {
-      flex: 1;
-      padding: 20px;
-      overflow-y: auto;
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
-
-    .userMsg, .botMsg {
-      padding: 12px 16px;
-      border-radius: 16px;
-      max-width: 75%;
-      word-wrap: break-word;
-      font-size: 15px;
-      line-height: 1.5;
-    }
-
-    .userMsg {
-      background-color: #ffc107;
-      color: #000;
-      align-self: flex-end;
-      text-align: left;
-    }
-
-    .botMsg {
-      background-color: #f0f0f0;
-      color: #333;
-      align-self: flex-start;
-    }
-
-    #inputContainer {
-      display: flex;
-      border-top: 1px solid #ccc;
-    }
-
-    #userInput {
-      flex: 1;
-      padding: 15px;
-      border: none;
-      font-size: 16px;
-      outline: none;
-    }
-
-    #sendBtn {
-      padding: 0 25px;
-      background: #ffc107;
-      border: none;
-      font-size: 16px;
-      font-weight: bold;
-      cursor: pointer;
-    }
-
-    ul {
-      padding-left: 18px;
-      margin: 10px 0;
-    }
-
-    ul li {
-      margin-bottom: 6px;
-    }
-
-    @media (max-width: 600px) {
-      #chatContainer {
-        height: 90vh;
-        border-radius: 0;
-      }
-    }
-  </style>
-</head>
-<body>
-
-<div id="chatContainer">
-  <div id="chatBox"></div>
-  <div id="inputContainer">
-    <input type="text" id="userInput" placeholder="Ask me anything..." />
-    <button id="sendBtn">Send</button>
-    <button onclick="window.speechSynthesis.cancel()">Stop Voice</button>
-  </div> 
-</div>
-
-
-
-
-
-
-<script src="client.js"></script>
-
-</body>
-</html> 
--->
-
-<!DOCTYPE html> 
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>HealthPlus Chatbot</title>
+  <title>HealthPlus</title>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
   <style>
     * {
@@ -298,11 +14,8 @@
     }
 
     body {
-      background-color: #fdf6f9;
+      background-color: #fdf6f9; /* Soft pink background */
       color: #222;
-      display: flex;
-      flex-direction: column;
-      min-height: 100vh;
     }
 
     /* Header */
@@ -328,103 +41,216 @@
       text-decoration: none;
       font-weight: 500;
       font-size: 16px;
+      position: relative;
       transition: color 0.3s;
     }
 
     nav a:hover {
-      color: #ffb6c1;
+      color: #ffb6c1; /* Light pink on hover */
     }
 
-    /* Chat Container */
-    #chatContainer {
-      width: 100%;
+    /* Hero Section */
+    .hero {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      padding: 60px 50px;
+      background: linear-gradient(to right, #ffe0ec, #fff5e1); /* Pink-Orange blend */
+      box-shadow: 0 5px 10px rgba(0,0,0,0.05);
+    }
+
+    .hero-text {
+      flex: 1;
+      min-width: 280px;
+    }
+
+    .hero-text h1 {
+      font-size: 48px;
+      font-weight: 700;
+      color: #0f1111;
+      margin-bottom: 20px;
+    }
+
+    .hero-text p {
+      font-size: 18px;
+      margin-bottom: 25px;
+      color: #444;
+    }
+
+    .hero-text .btn {
+      background-color: #ffa41c;
+      color: #0f1111;
+      padding: 12px 28px;
+      border-radius: 25px;
+      font-weight: 600;
+      text-decoration: none;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      transition: background-color 0.3s ease;
+    }
+
+    .hero-text .btn:hover {
+      background-color: #ff8c8c;
+      color: white;
+    }
+
+    .hero-image {
+      flex: 1;
+      text-align: center;
+      min-width: 280px;
+    }
+
+    .hero-image img {
+      width: 400px;
+      border-radius: 15px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    }
+
+    /* Features Section */
+    .features {
+      background-color: #fff5f8; /* light pink background */
+      text-align: center;
+      padding: 80px 20px;
+    }
+
+    .features .badge {
+      background-color: #ff80a6; /* warm pink */
+      color: white;
+      display: inline-block;
+      padding: 8px 20px;
+      border-radius: 20px;
+      font-weight: 600;
+      margin-bottom: 12px;
+    }
+
+    .features h2 {
+      font-size: 32px;
+      margin-bottom: 10px;
+    }
+
+    .features p {
       max-width: 700px;
-      height: 80vh;
-      display: flex;
-      flex-direction: column;
-      border: 1px solid #ccc;
+      margin: 0 auto 40px;
+      font-size: 16px;
+      color: #555;
+    }
+
+    .feature-box {
+      display: inline-block;
+      background-color: white;
       border-radius: 12px;
-      background: white;
-      box-shadow: 0 0 15px rgba(0, 0, 0, 0.08);
-      overflow: hidden;
-      margin: 30px auto;
-    }
-
-    #chatBox {
-      flex: 1;
       padding: 20px;
-      overflow-y: auto;
+      width: 320px;
+      margin: 20px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.07);
+      transition: transform 0.3s ease;
+    }
+
+    .feature-box:hover {
+      transform: translateY(-6px);
+    }
+
+    .feature-box img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      border-radius: 10px;
+    }
+
+    .circle-icon {
+      background-color: #ff80a6; /* soft pink circle */
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
       display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
-
-    .userMsg, .botMsg {
-      padding: 12px 16px;
-      border-radius: 16px;
-      max-width: 75%;
-      word-wrap: break-word;
-      font-size: 15px;
-      line-height: 1.5;
-    }
-
-    .userMsg {
-      background-color: #ffc107;
-      color: #000;
-      align-self: flex-end;
-    }
-
-    .botMsg {
-      background-color: #f0f0f0;
-      color: #333;
-      align-self: flex-start;
-    }
-
-    #inputContainer {
-      display: flex;
-      border-top: 1px solid #ccc;
-    }
-
-    #userInput {
-      flex: 1;
-      padding: 15px;
-      border: none;
-      font-size: 16px;
-      outline: none;
-    }
-
-    #sendBtn {
-      padding: 0 25px;
-      background: #ffc107;
-      border: none;
-      font-size: 16px;
+      align-items: center;
+      justify-content: center;
+      margin: -30px auto 20px;
+      font-size: 26px;
+      color: white;
       font-weight: bold;
-      cursor: pointer;
+      border: 3px solid white;
     }
 
-    footer {
+      .feature-box {
+        width: 90%;
+      } */
+       .features {
+      background-color: #fff0f6;
+      text-align: center;
+      padding: 60px 20px;
+    }
+
+    .features .badge {
+      background-color: #ffa41c;
+      color: white;
+      display: inline-block;
+      padding: 8px 18px;
+      border-radius: 20px;
+      margin-bottom: 16px;
+    }
+
+    .features h2 {
+      font-size: 30px;
+      margin-bottom: 12px;
+      color:#0f1111 ;
+    }
+
+    .features p {
+      max-width: 700px;
+      margin: 0 auto 30px;
+      color: #555;
+    }
+
+   .carousel-container {
+  max-width: 90%;
+  width: 600px;
+  height: 300px;
+  margin: 30px auto;
+  position: relative;
+  overflow: hidden;
+  border-radius: 12px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.carousel-images {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+}
+
+.carousel-images img {
+  width: 100%;
+  flex-shrink: 0;
+  height: 300px;
+  object-fit: cover;
+  border-radius: 12px;
+}
+ footer {
       background-color: #131921;
       color: #ccc;
-      padding: 15px 20px;
+      padding: 30px 20px;
       text-align: center;
       font-size: 14px;
-      margin-top: auto;
     }
 
-    @media (max-width: 600px) {
-      #chatContainer {
-        height: 90vh;
-        border-radius: 0;
-        margin: 0;
-      }
-
-      header {
+    @media (max-width: 768px) {
+      .hero {
         flex-direction: column;
         text-align: center;
       }
 
-      nav {
-        margin-top: 10px;
+      .hero-image {
+        text-align: center;
+        margin-top: 20px;
+      }
+
+      .carousel-images img {
+        width: 100%;
+        height: 200px;
+      }
+
+      .carousel-container {
+        max-width: 90%;
       }
     }
   </style>
@@ -434,7 +260,7 @@
   <header>
     <div class="logo">HealthPlus</div>
     <nav>
-      <a href="home.html">Home</a>
+      <a href="#">Home</a>
       <a href="healthtips.html">Health Tips</a>
       <a href="services.html">Services</a>
       <a href="diagnose.html">Diagnose Your Disease</a>
@@ -442,20 +268,66 @@
     </nav>
   </header>
 
-  <div id="chatContainer">
-    <div id="chatBox"></div>
-    <div id="inputContainer">
-      <input type="text" id="userInput" placeholder="Ask me anything..." />
-      <button id="sendBtn">Send</button>
-      <button onclick="window.speechSynthesis.cancel()">Stop Voice</button>
-    </div> 
-  </div>
+  <section class="hero">
+    <div class="hero-text">
+      <h1>Your Smart Health Partner</h1>
+      <p>Get accurate diagnosis, expert advice, and health tips tailored to your needs — anytime, anywhere.</p>
+      <a href="diagnose.html" class="btn">Start Diagnosis</a>
+    </div>
+    <div class="hero-image">
+      <img src="doctor.png" alt="Doctor working on laptop" />
+    </div>
+  </section>
 
+  <section class="features">
+    <div class="badge">Features</div>
+    <h2>What HealthPlus Can Do</h2>
+    <p>We provide intelligent tools to help you understand, track, and improve your health every step of the way.</p>
+
+    <div class="carousel-container">
+      <div class="carousel-images" id="carouselImages">
+        <img src="https://media.istockphoto.com/id/868644242/photo/close-up-of-stethoscope-and-doctor.webp?a=1&b=1&s=612x612&w=0&k=20&c=R7-U9IxWlMHKapHd0J9rM-bb9f3_xAVj5MEplpFpawo=" alt="Diagnosis" />
+        <img src="https://media.istockphoto.com/id/990873330/photo/human-heart-anatomy.webp?a=1&b=1&s=612x612&w=0&k=20&c=FiPOKL6KBX_71ud3kdSX30khOXt8NaM36pVcIKWJw2E=" alt="Doctor consultation" />
+        <img src="https://media.istockphoto.com/id/1623196376/photo/firing-neurons.webp?a=1&b=1&s=612x612&w=0&k=20&c=zV0IEPoy4b0HDc4RWcCD_rcpAsUQk_somJnF2sz0X8s=" alt="Health monitoring" />
+        <img src="https://images.unsplash.com/photo-1579781403289-674275bc71c5?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8ZGlzZWFzZXN8ZW58MHx8MHx8fDA%3D"/>
+      </div>
+      <button class="carousel-btn prev" onclick="prevSlide()">‹</button>
+      <button class="carousel-btn next" onclick="nextSlide()">›</button>
+    </div>
+  </section>
   <footer>
     &copy; 2025 HealthPlus. All rights reserved.
   </footer>
 
-  <script src="client.js"></script>
+
+  <script>
+  const carousel = document.getElementById("carouselImages");
+  let currentIndex = 0;
+
+  function updateSlide() {
+    const containerWidth = document.querySelector(".carousel-container").offsetWidth;
+    carousel.style.transform = `translateX(-${currentIndex * containerWidth}px)`;
+  }
+
+  function nextSlide() {
+    const totalSlides = carousel.children.length;
+    currentIndex = (currentIndex + 1) % totalSlides;
+    updateSlide();
+  }
+
+  function prevSlide() {
+    const totalSlides = carousel.children.length;
+    currentIndex = (currentIndex - 1 + totalSlides) % totalSlides;
+    updateSlide();
+  }
+
+  // Auto-slide every 4 seconds
+  setInterval(nextSlide, 4000);
+
+  // Update on window resize
+  window.addEventListener("resize", updateSlide);
+</script>
+
 
 </body>
 </html>

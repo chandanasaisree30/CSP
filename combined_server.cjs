@@ -86,6 +86,15 @@ app.get('/diagnose', (req, res) => {
     root: path.join(__dirname, 'public')
   });
 });
+
+// Chatbot page
+app.get('/chatbot', (req, res) => {
+  res.sendFile('chatbot.html', {
+    root: path.join(__dirname, 'public')
+  });
+});
+
+
 // Reminder API route
 app.post('/api/reminders', async (req, res) => {
   try {
