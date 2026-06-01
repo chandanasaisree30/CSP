@@ -6,12 +6,56 @@
   <title>Medication Reminder</title>
   <link href="https://fonts.googleapis.com/css2?family=Segoe+UI&display=swap" rel="stylesheet">
   <style>
+* {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Montserrat', sans-serif;
+    }
+
     body {
+      background-color: #fdf6f9; /* Soft pink background */
+      color: #222;
+    }
+
+    /* Header */
+    header {
+      background-color: #0f1111;
+      color: white;
+      padding: 20px 50px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .logo {
+      font-size: 28px;
+      font-weight: 700;
+      color: #ffa41c;
+    }
+
+    nav a {
+      margin: 0 15px;
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 16px;
+      position: relative;
+      transition: color 0.3s;
+    }
+
+    nav a:hover {
+      color: #ffb6c1; /* Light pink on hover */
+    }
+
+
+    /* body {
       font-family: 'Segoe UI', sans-serif;
       background: #f5f9ff;
       margin: 0;
       padding: 0;
-    }
+    } */
     .container {
       max-width: 600px;
       margin: 50px auto;
@@ -22,7 +66,7 @@
     }
     h2 {
       text-align: center;
-      color: #2f80ed;
+      color: #ffa41c;
       margin-bottom: 20px;
     }
     label {
@@ -31,14 +75,92 @@
       margin-bottom: 5px;
       font-weight: 600;
     }
+
+    #frequency{
+      display: block;
+      margin-top: 15px;
+      margin-bottom: 5px;
+      font-weight: 600;
+      width: 540px;
+      height: 40px;
+      border-radius: 12px;
+      border-color: #ccc;
+    }
     input, button {
       width: 100%;
       padding: 10px;
       border: 1px solid #ccc;
       border-radius: 8px;
     }
+
+   /* #customDays {
+  margin-top: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  padding: 1rem;
+  background-color: #f8f9fa;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+}
+
+#customDays input[type="checkbox"] {
+  display: none;
+}
+
+#customDays label {
+  padding: 10px 18px;
+  border-radius: 25px;
+  background-color: #eeeeee;
+  border: 2px solid transparent;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+#customDays input[type="checkbox"]:checked + label {
+  background-color: #2196f3;
+  color: white;
+  border-color: #1976d2;
+  box-shadow: 0 0 5px rgba(33, 150, 243, 0.5);
+}
+
+#customDays label:hover {
+  background-color: #d6d6d6;
+}  */
+
+
+#customDays input[type="checkbox"] {
+  display: none; /* Hide actual checkbox */
+}
+
+#customDays label {
+  display: inline-block;
+  padding: 8px 15px;
+  margin: 4px;
+  border: 2px solid #ccc;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  background-color: white;
+}
+
+/* Change style when selected */
+#customDays input[type="checkbox"]:checked + label {
+  background-color: #2196f3;
+  color: white;
+  border-color: #1976d2;
+  box-shadow: 0 0 10px rgba(33, 150, 243, 0.7);
+  transform: scale(1.05);
+}
+
+ 
+
+
+
     button {
-      background-color: #2f80ed;
+      background-color: #ffa41c;
       color: white;
       font-weight: bold;
       margin-top: 20px;
@@ -82,14 +204,72 @@
 </head>
 <body>
 
+  <header>
+    <div class="logo">HealthPlus</div>
+    <nav>
+      <a href="home.html">Home</a>
+      <a href="healthtips.html">Health Tips</a>
+      <a href="services.html">Services</a>
+      <a href="diagnose.html">Diagnose Your Disease</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </header>
+
   <div class="container">
     <h2>🕒 Medication Reminder</h2>
     <form id="reminderForm">
       <label for="email">Your Email</label>
       <input type="email" id="email" required />
 
-      <label for="phone">Your Phone Number</label>
+      <label for="name">Your name</label>
+      <input type="name" id="name" required />
+
+      <label for="phone">Your ID</label>
       <input type="tel" id="phone" pattern="[0-9]{10}" placeholder="Enter 10-digit number" required />
+
+      <label for="frequency">🔁 Reminder Frequency</label>
+      <select id="frequency">
+        <option value="daily">Daily</option>
+        <option value="custom">Custom</option>
+      </select>
+
+      <!-- <div id="customDays" style="display: none;">
+        <label><input type="checkbox" value="Monday"> Monday</label>
+        <label><input type="checkbox" value="Tuesday"> Tuesday</label>
+        <label><input type="checkbox" value="Wednesday"> Wednesday</label>
+        <label><input type="checkbox" value="Thursday"> Thursday</label>
+        <label><input type="checkbox" value="Friday"> Friday</label>
+        <label><input type="checkbox" value="Saturday"> Saturday</label>
+        <label><input type="checkbox" value="Sunday"> Sunday</label>
+      </div> -->
+    
+
+     
+ <div id="customDays" style="display: none;">
+  <input type="checkbox" id="monday" value="Monday">
+  <label for="monday">Monday</label>
+
+  <input type="checkbox" id="tuesday" value="Tuesday">
+  <label for="tuesday">Tuesday</label>
+
+  <input type="checkbox" id="wednesday" value="Wednesday">
+  <label for="wednesday">Wednesday</label>
+
+  <input type="checkbox" id="thursday" value="Thursday">
+  <label for="thursday">Thursday</label>
+
+  <input type="checkbox" id="friday" value="Friday">
+  <label for="friday">Friday</label>
+
+  <input type="checkbox" id="saturday" value="Saturday">
+  <label for="saturday">Saturday</label>
+
+  <input type="checkbox" id="sunday" value="Sunday">
+  <label for="sunday">Sunday</label>
+</div>
+
+
+
 
       <div id="medicationList">
         <label>Medications & Timings</label>
@@ -97,7 +277,7 @@
           <input type="text" name="medication[]" placeholder="e.g. Paracetamol" required />
           <input type="time" name="time[]" required />
           <input type="number" name="duration[]" placeholder="Days" min="1" max="30" required />
-          <label class="daily-checkbox">
+          <label class="daily-checkbox" style="display: none;">
             <input type="checkbox" name="isDaily[]" />
             Daily
           </label>
@@ -116,6 +296,18 @@
     const medicationList = document.getElementById('medicationList');
     const form = document.getElementById('reminderForm');
     const statusText = document.getElementById('status');
+
+    const frequencySelect = document.getElementById('frequency');
+const customDaysDiv = document.getElementById('customDays');
+const emailField = document.getElementById('emailField'); // for showing/hiding email input
+
+frequencySelect.addEventListener('change', () => {
+  if (frequencySelect.value === 'custom') {
+    customDaysDiv.style.display = 'block';
+  } else {
+    customDaysDiv.style.display = 'none';
+  }
+});
   
     function handleDailyCheckboxChange(checkbox) {
       const durationInput = checkbox.closest('.medication-group').querySelector('input[name="duration[]"]');

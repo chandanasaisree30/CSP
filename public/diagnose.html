@@ -4,7 +4,6 @@
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Symptom Diagnosis | HealthPlus</title>
-
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
   <style>
@@ -58,9 +57,43 @@
       box-shadow: 0 5px 10px rgba(0,0,0,0.05);
     }
 
-    select[multiple] {
-      height: 200px;
+    .symptom-box {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 15px;
     }
+
+    .symptom-chip {
+      background-color: #ffa41c;
+      color: #fff;
+      padding: 6px 12px;
+      border-radius: 20px;
+      display: flex;
+      align-items: center;
+    }
+
+    .symptom-chip span {
+      margin-left: 8px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .checkbox-list label {
+      display: block;
+      margin-bottom: 8px;
+      cursor: pointer;
+      padding-left: 10px;
+    }
+          .checkbox-list {
+  max-height: 250px;
+  overflow-y: auto;
+  padding-right: 10px; /* optional: avoid hiding scroll bar content */
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background: #fff;
+}
+
 
     .btn-diagnose {
       background-color: #ffa41c;
@@ -86,6 +119,9 @@
       border-radius: 8px;
     }
 
+
+
+
     @media (max-width: 768px) {
       header {
         padding: 20px;
@@ -101,6 +137,7 @@
         margin: 20px;
         padding: 20px;
       }
+
     }
   </style>
 </head>
@@ -111,332 +148,25 @@
       <a href="home.html">Home</a>
       <a href="healthtips.html">Health Tips</a>
       <a href="services.html">Services</a>
-      <a href="diagnose.html">Cure Disease</a>
+      <a href="diagnose.html">Diagnose Your Disease</a>
       <a href="contact.html">Contact</a>
     </nav>
   </header>
 
   <div class="container">
     <h2 class="text-center mb-4">Select Your Symptoms</h2>
+    
+    <div class="symptom-box" id="selectedSymptomsBox"></div>
+
     <form id="diagnoseForm">
-      <div class="mb-3">
-        <label for="symptoms" class="form-label">Choose your symptoms (use Ctrl/Cmd for multiple):</label>
-        <select multiple class="form-control" id="symptoms" required>
-          <option value="fever">Fever</option>
-          <option value="cough">Cough</option>
-          <option value="fatigue">Fatigue</option>
-          <option value="headache">Headache</option>
-          <option value="sore throat">Sore Throat</option>
-          <option value="runny nose">Runny Nose</option>
-          <option value="nausea">Nausea</option>
-          <option value="vomiting">Vomiting</option>
-          <option value="diarrhea">Diarrhea</option>
-          <option value="chest pain">Chest Pain</option>
-          <option value="shortness of breath">Shortness of Breath</option>
-          <option value="loss of taste">Loss of Taste</option>
-          <option value="loss of smell">Loss of Smell</option>
-          <option value="rash">Rash</option>
-          <option value="joint pain">Joint Pain</option>
-          <option value="fever">Fever</option>
-<option value="cough">Cough</option>
-<option value="fatigue">Fatigue</option>
-<option value="joint pain">Joint Pain</option>
-<option value="rash">Rash</option>
-<option value="headache">Headache</option>
-<option value="sensitivity to light">Sensitivity to Light</option>
-<option value="nausea">Nausea</option>
-<option value="chest pain">Chest Pain</option>
-<option value="shortness of breath">Shortness of Breath</option>
-<option value="dizziness">Dizziness</option>
-<option value="sore throat">Sore Throat</option>
-<option value="runny nose">Runny Nose</option>
-<option value="sneezing">Sneezing</option>
-<option value="diarrhea">Diarrhea</option>
-<option value="vomiting">Vomiting</option>
-<option value="abdominal pain">Abdominal Pain</option>
-<option value="itching">Itching</option>
-<option value="redness">Redness</option>
-<option value="frequent urination">Frequent Urination</option>
-<option value="increased thirst">Increased Thirst</option>
-<option value="blurred vision">Blurred Vision</option>
-<option value="morning stiffness">Morning Stiffness</option>
-<option value="swollen joints">Swollen Joints</option>
-<option value="persistent cough">Persistent Cough</option>
-<option value="blood in sputum">Blood in Sputum</option>
-<option value="weight loss">Weight Loss</option>
-<option value="yellow skin">Yellow Skin</option>
-<option value="yellow eyes">Yellow Eyes</option>
-<option value="dark urine">Dark Urine</option>
-<option value="sudden confusion">Sudden Confusion</option>
-<option value="slurred speech">Slurred Speech</option>
-<option value="numbness on one side">Numbness on One Side</option>
-<option value="night sweats">Night Sweats</option>
-<option value="enlarged lymph nodes">Enlarged Lymph Nodes</option>
-<option value="snoring">Snoring</option>
-<option value="daytime sleepiness">Daytime Sleepiness</option>
-<option value="difficulty concentrating">Difficulty Concentrating</option>
-<option value="persistent sadness">Persistent Sadness</option>
-<option value="loss of interest">Loss of Interest</option>
-<option value="anxiety">Anxiety</option>
-<option value="restlessness">Restlessness</option>
-<option value="rapid heartbeat">Rapid Heartbeat</option>
-<option value="wheezing">Wheezing</option>
-<option value="back pain">Back Pain</option>
-<option value="numbness in legs">Numbness in Legs</option>
-<option value="muscle weakness">Muscle Weakness</option>
-<option value="weight gain">Weight Gain</option>
-<option value="dry skin">Dry Skin</option>
-<option value="cold intolerance">Cold Intolerance</option>
-<option value="tremor">Tremor</option>
-<option value="slow movement">Slow Movement</option>
-<option value="balance issues">Balance Issues</option>
-<option value="sore muscles">Sore Muscles</option>
-<option value="difficulty sleeping">Difficulty Sleeping</option>
-<option value="chills">Chills</option>
-<option value="mucus production">Mucus Production</option>
-<option value="loss of taste or smell">Loss of Taste or Smell</option>
-<option value="ear pain">Ear Pain</option>
-<option value="difficulty hearing">Difficulty Hearing</option>
-<option value="nasal congestion">Nasal Congestion</option>
-<option value="watery eyes">Watery Eyes</option>
-<option value="sweating">Sweating</option>
-<option value="high fever">High Fever</option>
-<option value="swollen tonsils">Swollen Tonsils</option>
-<option value="severe pain">Severe Pain</option>
-<option value="blood in urine">Blood in Urine</option>
-<option value="pelvic pain">Pelvic Pain</option>
-<option value="red patches">Red Patches</option>
-<option value="pale skin">Pale Skin</option>
-<option value="cramps">Cramps</option>
-<option value="heartburn">Heartburn</option>
-<option value="chest discomfort">Chest Discomfort</option>
-<option value="regurgitation">Regurgitation</option>
-<option value="sour taste">Sour Taste</option>
-<option value="difficulty swallowing">Difficulty Swallowing</option>
-<option value="nervousness">Nervousness</option>
-<option value="seizures">Seizures</option>
-<option value="unconsciousness">Unconsciousness</option>
-<option value="vision problems">Vision Problems</option>
-<option value="swelling">Swelling</option>
-<option value="bloating">Bloating</option>
-<option value="gas">Gas</option>
-<option value="irregular periods">Irregular Periods</option>
-<option value="acne">Acne</option>
-<option value="heavy periods">Heavy Periods</option>
-<option value="infertility">Infertility</option>
-<option value="widespread pain">Widespread Pain</option>
-<option value="sleep disturbances">Sleep Disturbances</option>
-<option value="eye pain">Eye Pain</option>
-<option value="cloudy vision">Cloudy Vision</option>
-<option value="light sensitivity">Light Sensitivity</option>
-<option value="fading colors">Fading Colors</option>
-<option value="blurry central vision">Blurry Central Vision</option>
-<option value="dark spots">Dark Spots</option>
-<option value="distortion">Distortion</option>
-<option value="ringing in ears">Ringing in Ears</option>
-<option value="ear pressure">Ear Pressure</option>
-<option value="spinning sensation">Spinning Sensation</option>
-<option value="mania">Mania</option>
-<option value="hallucinations">Hallucinations</option>
-<option value="delusions">Delusions</option>
-<option value="disorganized thinking">Disorganized Thinking</option>
-<option value="inattention">Inattention</option>
-<option value="hyperactivity">Hyperactivity</option>
-<option value="impulsivity">Impulsivity</option>
-<option value="panic attacks">Panic Attacks</option>
-<option value="palpitations">Palpitations</option>
-<option value="fear of social situations">Fear of Social Situations</option>
-<option value="blushing">Blushing</option>
-<option value="trembling">Trembling</option>
-<option value="flashbacks">Flashbacks</option>
-<option value="nightmares">Nightmares</option>
-<option value="waking up early">Waking up Early</option>
-<option value="low energy">Low Energy</option>
-<option value="high body temperature">High Body Temperature</option>
-<option value="hot dry skin">Hot Dry Skin</option>
-<option value="shivering">Shivering</option>
-<option value="slow breathing">Slow Breathing</option>
-<option value="dry mouth">Dry Mouth</option>
-<option value="motion sickness">Motion Sickness</option>
-<option value="stiff neck">Stiff Neck</option>
-<option value="confusion">Confusion</option>
-<option value="joint swelling">Joint Swelling</option>
-<option value="bleeding">Bleeding</option>
-<option value="muscle aches">Muscle Aches</option>
-<option value="swollen cheeks">Swollen Cheeks</option>
-<option value="jaw cramping">Jaw Cramping</option>
-<option value="fear of water">Fear of Water</option>
-<option value="bullseye rash">Bullseye Rash</option>
-<option value="skin lesions">Skin Lesions</option>
-<option value="muscle paralysis">Muscle Paralysis</option>
-<option value="drooping eyelids">Drooping Eyelids</option>
-<option value="difficulty breathing">Difficulty Breathing</option>
-<option value="ulcers">Ulcers</option>
-<option value="sores">Sores</option>
-<option value="painful urination">Painful Urination</option>
-<option value="discharge">Discharge</option>
-<option value="swollen testicles">Swollen Testicles</option>
-<option value="painful blisters">Painful Blisters</option>
-<option value="flu-like symptoms">Flu-like Symptoms</option>
-<option value="abnormal discharge">Abnormal Discharge</option>
-<option value="painful bumps">Painful Bumps</option>
-<option value="abscesses">Abscesses</option>
-<option value="pus leakage">Pus Leakage</option>
-<option value="difficulty speaking">Difficulty Speaking</option>
-<option value="electric-shock pain">Electric-Shock Pain</option>
-<option value="spasms">Spasms</option>
-<option value="urge to move legs">Urge to Move Legs</option>
-<option value="tingling">Tingling</option>
-<option value="sleep disruption">Sleep Disruption</option>
-<option value="cold fingers">Cold Fingers</option>
-<option value="color change in skin">Color Change in Skin</option>
-<option value="numbness">Numbness</option>
-<option value="jaw pain">Jaw Pain</option>
-<option value="clicking sound">Clicking Sound</option>
-<option value="enlarged hands">Enlarged Hands</option>
-<option value="coarse facial features">Coarse Facial Features</option>
-<option value="round face">Round Face</option>
-<option value="stretch marks">Stretch Marks</option>
-<option value="darkened skin">Darkened Skin</option>
-<option value="low blood pressure">Low Blood Pressure</option>
-<option value="tall stature">Tall Stature</option>
-<option value="long limbs">Long Limbs</option>
-<option value="heart murmurs">Heart Murmurs</option>
-<option value="joint hypermobility">Joint Hypermobility</option>
-<option value="skin that stretches">Skin that Stretches</option>
-<option value="easy bruising">Easy Bruising</option>
-<option value="vision loss">Vision Loss</option>
-<option value="developmental delay">Developmental Delay</option>
-<option value="musty odor">Musty Odor</option>
-<option value="joint bleeding">Joint Bleeding</option>
-<option value="prolonged bleeding">Prolonged Bleeding</option>
-<option value="pain episodes">Pain Episodes</option>
-<option value="enlarged spleen">Enlarged Spleen</option>
-<option value="liver damage">Liver Damage</option>
-<option value="Kayser-Fleischer rings">Kayser-Fleischer Rings</option>
-<option value="sudden fever">Sudden Fever</option>
-<option value="weakness">Weakness</option>
-<option value="paralysis">Paralysis</option>
-<option value="facial droop">Facial Droop</option>
-<option value="drooling">Drooling</option>
-<option value="inability to close eye">Inability to Close Eye</option>
-<option value="ear ringing">Ear Ringing</option>
-<option value="leg pain">Leg Pain</option>
-<option value="cramping">Cramping</option>
-<option value="relieved by rest">Relieved by Rest</option>
-<option value="cold feet">Cold Feet</option>
-<option value="fainting">Fainting</option>
-<option value="sharp chest pain">Sharp Chest Pain</option>
-<option value="bulging veins">Bulging Veins</option>
-<option value="protein in urine">Protein in Urine</option>
-<option value="painless bleeding">Painless Bleeding</option>
-<option value="preterm labor">Preterm Labor</option>
-<option value="uterine tenderness">Uterine Tenderness</option>
-<option value="vaginal bleeding">Vaginal Bleeding</option>
-<option value="shoulder pain">Shoulder Pain</option>
-<option value="delayed growth">Delayed Growth</option>
-<option value="bowed legs">Bowed Legs</option>
-<option value="bleeding gums">Bleeding Gums</option>
-<option value="bruising">Bruising</option>
-<option value="dry eyes">Dry Eyes</option>
-<option value="blurry vision">Blurry Vision</option>
-<option value="neck swelling">Neck Swelling</option>
-<option value="hoarseness">Hoarseness</option>
-<option value="dermatitis">Dermatitis</option>
-<option value="dementia">Dementia</option>
-<option value="enlarged head">Enlarged Head</option>
-<option value="irritability">Irritability</option>
-<option value="spinal bulge">Spinal Bulge</option>
-<option value="bowel problems">Bowel Problems</option>
-<option value="tics">Tics</option>
-<option value="blinking">Blinking</option>
-<option value="grunting">Grunting</option>
-<option value="muscle twitching">Muscle Twitching</option>
-<option value="butterfly rash">Butterfly Rash</option>
-<option value="mouth sores">Mouth Sores</option>
-<option value="genital sores">Genital Sores</option>
-<option value="eye inflammation">Eye Inflammation</option>
-<option value="stiffness">Stiffness</option>
-<option value="bone pain">Bone Pain</option>
-<option value="deformities">Deformities</option>
-<option value="fragile bones">Fragile Bones</option>
-<option value="frequent fractures">Frequent Fractures</option>
-<option value="short stature">Short Stature</option>
-<option value="neck lump">Neck Lump</option>
-<option value="trouble swallowing">Trouble Swallowing</option>
-<option value="social challenges">Social Challenges</option>
-<option value="repetitive behavior">Repetitive Behavior</option>
-<option value="speech delay">Speech Delay</option>
-<option value="distinct facial features">Distinct Facial Features</option>
-<option value="poor muscle tone">Poor Muscle Tone</option>
-<option value="small testes">Small Testes</option>
-<option value="low testosterone">Low Testosterone</option>
-<option value="light eyes">Light Eyes</option>
-<option value="difficulty distinguishing colors">Difficulty Distinguishing Colors</option>
-<option value="inability to see red/green">Inability to See Red/Green</option>
-<option value="poor color perception">Poor Color Perception</option>
-<option value="proteinuria">Proteinuria</option>
-<option value="swollen ankles">Swollen Ankles</option>
-<option value="foamy urine">Foamy Urine</option>
-<option value="bladder pressure">Bladder Pressure</option>
-<option value="cloudy urine">Cloudy Urine</option>
-<option value="flank pain">Flank Pain</option>
-<option value="severe side pain">Severe Side Pain</option>
-<option value="urinary problems">Urinary Problems</option>
-<option value="weak urine stream">Weak Urine Stream</option>
-<option value="dribbling">Dribbling</option>
-<option value="difficulty maintaining erection">Difficulty Maintaining Erection</option>
-<option value="low libido">Low Libido</option>
-<option value="performance anxiety">Performance Anxiety</option>
-<option value="difficulty conceiving">Difficulty Conceiving</option>
-<option value="lump in breast">Lump in Breast</option>
-<option value="nipple discharge">Nipple Discharge</option>
-<option value="skin changes">Skin Changes</option>
-<option value="lump in testicle">Lump in Testicle</option>
-<option value="heaviness">Heaviness</option>
-<option value="dull ache">Dull Ache</option>
-<option value="upper abdominal pain">Upper Abdominal Pain</option>
-<option value="right upper pain">Right Upper Pain</option>
-<option value="rectal bleeding">Rectal Bleeding</option>
-<option value="pain during bowel movements">Pain During Bowel Movements</option>
-<option value="sharp anal pain">Sharp Anal Pain</option>
-<option value="spasms during defecation">Spasms During Defecation</option>
-<option value="mild cough">Mild Cough</option>
-<option value="itchy throat">Itchy Throat</option>
-<option value="dry cough">Dry Cough</option>
-<option value="persistent dry mouth">Persistent Dry Mouth</option>
-<option value="memory problems">Memory Problems</option>
-<option value="vision changes">Vision Changes</option>
-<option value="abdominal bloating">Abdominal Bloating</option>
-<option value="excessive sweating">Excessive Sweating</option>
-<option value="heat intolerance">Heat Intolerance</option>
-<option value="flaky skin">Flaky Skin</option>
-<option value="lower back pain">Lower Back Pain</option>
-<option value="trouble bending">Trouble Bending</option>
-<option value="sensitivity to sound">Sensitivity to Sound</option>
-<option value="jaw discomfort">Jaw Discomfort</option>
-<option value="lower abdominal pain">Lower Abdominal Pain</option>
-<option value="constipation">Constipation</option>
-<option value="bloody diarrhea">Bloody Diarrhea</option>
-<option value="scalp tenderness">Scalp Tenderness</option>
-<option value="burning pain">Burning Pain</option>
-<option value="jaw locking">Jaw Locking</option>
-<option value="muscle wasting">Muscle Wasting</option>
-<option value="trouble walking">Trouble Walking</option>
-<option value="weak limbs">Weak Limbs</option>
-<option value="abnormal heart rhythm">Abnormal Heart Rhythm</option>
-<option value="itching (generalized)">Itching (Generalized)</option>
-<option value="throat pain">Throat Pain</option>
-<option value="white patches">White Patches</option>
-<option value="acid taste">Acid Taste</option>
-<option value="tight chest">Tight Chest</option>
-<option value="muscle spasms">Muscle Spasms</option>
-<option value="skin ulcers">Skin Ulcers</option>
-<option value="loss of balance">Loss of Balance</option>
-<option value="double vision">Double Vision</option>
-<option value="red bumps">Red Bumps</option>
-<option value="fast heartbeat">Fast Heartbeat</option>
-        </select>
+
+        <input type="text" id="symptomSearch" class="form-control mb-3" placeholder="Search symptoms..." />
+
+      <div class="checkbox-list mb-3" id="symptomCheckboxes">
+
+      
+
+        <!-- Checkboxes will be injected by JavaScript -->
       </div>
       <button type="submit" class="btn btn-diagnose w-100">Diagnose</button>
     </form>
@@ -446,9 +176,57 @@
       <ul id="resultList" class="mb-0"></ul>
     </div>
   </div>
+
   <script>
-  const diseaseData = {
-    "Flu": ["fever", "cough", "fatigue", "sore throat", "runny nose"],
+  const symptoms = [
+      "Fever", "Cough", "Fatigue", "Headache", "Sore Throat", "Runny Nose",
+      "Loss of Balance", "Double Vision", "Red Bumps", "Fast Heartbeat","Nausea","Vomiting"
+      ,"Diarrhea","Chest Pain","Shortness of Breath","Loss of Taste","Loss of Smell","Rash","Joint Pain",
+      "Sensitivity to Light","Dizziness","Sneezing","Abdominal Pain","Itching","Redness",
+      "Frequent Urination","Increased Thirst","Blurred Vision","Morning Stiffness","Swollen Joints","Persistent Cough"
+,"Blood in Sputum","Weight Loss","Yellow Skin","Yellow Eyes","Dark Urine","Sudden Confusion","Slurred Speech"
+,"Numbness on One Side","Night Sweats","Enlarged Lymph Nodes","Daytime Sleepiness","Difficulty Concentrating"
+,"Persistent Sadness","Loss of Interest","Anxiety","Restlessness","Rapid Heartbeat",,"Wheezing","Back Pain"
+,"Numbness in Legs","Muscle Weakness","Weight Gain","Dry Skin","Cold Intolerance","Tremor","Slow Movement",
+"Balance Issues","Sore Muscles","Difficulty Sleeping","Chills","Mucus Production","Loss of Taste or Smell"
+,"Ear Pain","Difficulty Hearing","Nasal Congestion","Watery Eyes","Sweating","High Fever",
+"Swollen Tonsils","Severe Pain","Blood in Urine","Pelvic Pain","Red Patches","Pale Skin","Crampsheartburn","Heartburnchest discomfort",
+"Chest Discomfortregurgitation","Regurgitationsour taste","Sour Tastedifficulty swallowing","Difficulty Swallowingnervousness","Nervousnessseizures"
+,"Seizures","Unconsciousness","Vision Problems","Swelling","Bloating","Gas","Irregular Periods","Acne","Heavy Periods",
+"Infertility","Widespread Pain","Sleep Disturbances","Eye Pain","Cloudy Vision","Light Sensitivity","Fading Colors",
+"Blurry Central Vision","Dark Spots","Distortion","Ringing in Ears","Ear Pressure","Spinning Sensation","Mania",
+"Hallucinations","Delusions","Disorganized Thinking","Inattention","Hyperactivity",,"Impulsivity",
+"Panic Attacks","Palpitations","Fear of Social Situations","Blushing","Trembling","Flashbacks","Nightmares",
+"Waking up Early","Low Energy","High Body Temperature","Hot Dry Skin","Shivering","Slow Breathing","Dry Mouth"
+,"Motion Sickness","Stiff Neck","Joint Swelling","Muscle Aches","Jaw Cramping","Fear of Water","Bullseye Rash"
+,"Skin Lesions","Muscle Paralysis","Drooping Eyelids","Difficulty Breathing","Ulcers","Sores","Painful Urination","Discharge","Swollen Testicles"
+,"Painful Blisters","Flu-like Symptoms","Abnormal Discharge","Painful Bumps","Abscesses","Pus Leakage","Difficulty Speaking"
+,"Electric-Shock Pain","Spasms","Urge to Move Legs","Tingling","Sleep Disruption","Cold Fingers","Color Change in Skin",
+,"Numbness","Jaw Pain","Clicking Sound","Enlarged Hands","Coarse Facial Features","Stretch Marks","Darkened Skin"
+,"Low Blood Pressure","Tall Stature","Long Limbs","Heart Murmurs","Joint Hypermobility","Skin that Stretches"
+,"Easy Bruising","Vision Loss","Developmental Delay","Musty Odor","Joint Bleeding","Prolonged Bleeding","Pain Episodes"
+,"Enlarged Spleen","Kayser-Fleischer Rings","Sudden Fever","Weakness","Paralysis","Facial Droop","Drooling"
+,"Inability to Close Eye","Ear Ringing","Leg Pain","Cramping","Relieved by Rest","Cold Feet","Fainting","Sharp Chest Pain","Bulging Veins"
+,"Protein in Urine","Painless Bleeding","Preterm Labor","Uterine Tenderness","Vaginal Bleeding","Shoulder Pain"
+,"Delayed Growth","Bowed Legs","Bleeding Gums","Bruising","Dry Eyes","Blurry Vision","Neck Swelling","Hoarseness","Dermatitis"
+,"Dementia","Enlarged Head","Irritability","Spinal Bulge","Bowel Problems","Tics","Blinking","Grunting","Muscle Twitching"
+,"Butterfly Rash","Mouth Sores","Genital Sores","Eye Inflammation","Stiffness","Bone Pain","Deformities","Fragile Bones"
+,"Frequent Fractures","Short Stature","Neck Lump","Trouble Swallowing","Social Challenges","Repetitive Behavior","Speech Delay"
+,"Distinct Facial Features","Poor Muscle Tone","Small Testes","Low Testosterone","Light Eyes","Difficulty Distinguishing Colors"
+,"Inability to See Red/Green","Poor Color Perception","Proteinuria","Swollen Ankles","Foamy Urine","Bladder Pressure"
+,"Cloudy Urine","Flank Pain","Severe Side Pain","Urinary Problems","Weak Urine Stream","Dribbling","Difficulty Maintaining Erection","Low Libido","Performance Anxiety"
+,"Difficulty Conceiving","Lump in Breast","Nipple Discharge","Skin Changes","Lump in Testicle","Heaviness","Dull Ache","Upper Abdominal Pain","Right Upper Pain"
+,"Rectal Bleeding","Pain During Bowel Movements","Sharp Anal Pain","Spasms During Defecation","Mild Cough","Itchy Throat"
+,"Dry Cough","Persistent Dry Mouth","Memory Problems","Vision Changes","Abdominal Bloating","Excessive Sweating","Heat Intolerance","Flaky Skin"
+,"Lower Back Pain","Trouble Bending","Sensitivity to Sound","Jaw Discomfort","Lower Abdominal Pain","Constipation","Bloody Diarrhea"
+,"Scalp Tenderness","Burning Pain","Jaw Locking","Muscle Wasting","Trouble Walking","Weak Limbs","Abnormal Heart Rhythm"
+,"Itching (Generalized)","Throat Pain","White Patches","Acid Taste","Tight Chest","Muscle Spasms","Skin Ulcers","Loss of Balance","Double Vision"
+,"Red Bumps","Fast Heartbeat"
+    ];
+
+
+ const diseaseData = {
+      "Flu": ["fever", "cough", "fatigue", "sore throat", "runny nose"],
     "COVID-19": ["fever", "cough", "fatigue", "loss of taste", "loss of smell", "shortness of breath"],
     "Food Poisoning": ["nausea", "vomiting", "diarrhea", "fatigue"],
     "Dengue": ["fever", "headache", "rash", "joint pain", "fatigue"],
@@ -478,11 +256,67 @@
   "Thyroid Disorder": ["fatigue", "weight changes", "dry skin", "hair thinning", "depression"],
   "Anemia": ["fatigue", "pale skin", "shortness of breath", "dizziness", "cold hands and feet"]
 
-  };
+    };
 
-  document.getElementById("diagnoseForm").addEventListener("submit", function(e) {
+  const checkboxContainer = document.getElementById("symptomCheckboxes");
+  const selectedBox = document.getElementById("selectedSymptomsBox");
+  const selectedSymptoms = new Set();
+  const searchInput = document.getElementById("symptomSearch"); // 🔍 Search input
+
+  function renderCheckboxes(filter = "") {
+    checkboxContainer.innerHTML = "";
+    const filteredSymptoms = symptoms.filter(symptom =>
+      symptom.toLowerCase().includes(filter.toLowerCase())
+    );
+
+    filteredSymptoms.forEach(symptom => {
+      const id = symptom.toLowerCase().replace(/\s/g, '-');
+      const isChecked = selectedSymptoms.has(symptom) ? "checked" : "";
+      checkboxContainer.innerHTML += `
+        <label>
+          <input type="checkbox" value="${symptom}" id="${id}" ${isChecked}> ${symptom}
+        </label>
+      `;
+    });
+  }
+
+  function renderSelectedChips() {
+    selectedBox.innerHTML = "";
+    selectedSymptoms.forEach(symptom => {
+      const chip = document.createElement("div");
+      chip.className = "symptom-chip";
+      chip.innerHTML = `${symptom} <span onclick="removeSymptom('${symptom}')">&times;</span>`;
+      selectedBox.appendChild(chip);
+    });
+  }
+
+  function removeSymptom(symptom) {
+    selectedSymptoms.delete(symptom);
+    document.getElementById(symptom.toLowerCase().replace(/\s/g, '-')).checked = false;
+    renderSelectedChips();
+  }
+
+  checkboxContainer.addEventListener("change", e => {
+    if (e.target.type === "checkbox") {
+      const val = e.target.value;
+      if (e.target.checked) {
+        selectedSymptoms.add(val);
+      } else {
+        selectedSymptoms.delete(val);
+      }
+      renderSelectedChips();
+    }
+  });
+
+  searchInput.addEventListener("input", () => {
+    renderCheckboxes(searchInput.value);
+  });
+
+  renderCheckboxes(); // Initial render
+
+  document.getElementById("diagnoseForm").addEventListener("submit", function (e) {
     e.preventDefault();
-    const selectedOptions = Array.from(document.getElementById("symptoms").selectedOptions).map(opt => opt.value.toLowerCase());
+    const selectedArray = Array.from(selectedSymptoms).map(s => s.toLowerCase());
     const resultList = document.getElementById("resultList");
     resultList.innerHTML = "";
 
@@ -490,7 +324,7 @@
 
     for (const disease in diseaseData) {
       const symptoms = diseaseData[disease];
-      const matches = symptoms.filter(symptom => selectedOptions.includes(symptom));
+      const matches = symptoms.filter(symptom => selectedArray.includes(symptom));
       const matchPercent = Math.round((matches.length / symptoms.length) * 100);
 
       if (matches.length > 0) {
@@ -505,11 +339,8 @@
     if (matchesArray.length === 0) {
       resultList.innerHTML = `<li>No matching diseases found. Please check your symptoms.</li>`;
     } else {
-      // Sort by match percentage in descending order
       matchesArray.sort((a, b) => b.matchPercent - a.matchPercent);
-
-      // Display only top 5 results
-      matchesArray.slice(0, 5).forEach(({ disease, matchPercent, matchedSymptoms }) => {
+      matchesArray.slice(0, 3).forEach(({ disease, matchPercent, matchedSymptoms }) => {
         const li = document.createElement("li");
         li.innerHTML = `<strong>${disease}</strong>: ${matchPercent}% match (${matchedSymptoms.join(", ")})`;
         resultList.appendChild(li);
@@ -520,6 +351,6 @@
   });
 </script>
 
-
 </body>
-</html>
+</html> 
+

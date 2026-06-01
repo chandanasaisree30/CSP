@@ -189,7 +189,7 @@ app.use(express.json());
 app.use(express.static(path.join(__dirname, "public")));
 
 const ai = new GoogleGenAI({
-    apiKey: "AIzaSyBJzeSO2s2XgSlB7EssNy73HF4gHKNiGWk" // replace with your actual key
+    apiKey: "AIzaSyCft7Boh5aL-i1_xQuV1F4SRqrYzb2Oo0k" // replace with your actual key
 });
 
 app.post("/gemini", async (req, res) => {

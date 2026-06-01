@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!--<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -95,16 +95,16 @@
     </div>
 
     <div id="chatbot">
-      <!-- Embed your chatbot here -->
+       Embed your chatbot here 
       <iframe src="http://localhost:3000" width="100%" height="400px" style="border:none; border-radius:10px;"></iframe>
     </div>
 
     <footer>
-      <!-- <p>📧 healthplus.help@gmail.com &nbsp; | &nbsp; Follow us:
+       <p>📧 healthplus.help@gmail.com &nbsp; | &nbsp; Follow us:
         <a href="#">Instagram</a> |
         <a href="#">Twitter</a> |
         <a href="#">LinkedIn</a>
-      </p> -->
+      </p> 
       <p>&copy; 2025 HealthPlus. All rights reserved.</p>
     </footer>
   </div>
@@ -115,6 +115,160 @@
       chatbot.style.display = chatbot.style.display === 'none' ? 'block' : 'none';
     }
   </script>
+
+</body>
+</html>
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Emergency Contacts | HealthPlus</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+  <script src="https://kit.fontawesome.com/your-fontawesome-kit.js" crossorigin="anonymous"></script>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Montserrat', sans-serif;
+    }
+    body {
+      background-color: #fdf6f9;
+      color: #222;
+    }
+    header {
+      background-color: #0f1111;
+      color: white;
+      padding: 20px 50px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    .logo {
+      font-size: 28px;
+      font-weight: 700;
+      color: #ffa41c;
+    }
+    nav a {
+      margin: 0 15px;
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 16px;
+      transition: color 0.3s;
+    }
+    nav a:hover {
+      color: #ffb6c1;
+    }
+    .header {
+      text-align: center;
+      padding: 40px 20px;
+      background: linear-gradient(to right, #ffe0ec, #fff5e1);
+      box-shadow: 0 5px 10px rgba(0,0,0,0.05);
+    }
+    .header h2 {
+      font-size: 32px;
+      color: #0f1111;
+      margin-bottom: 8px;
+    }
+    .header p {
+      color: #444;
+      font-size: 16px;
+    }
+    .contacts {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      padding: 40px 20px;
+      max-width: 1200px;
+      margin: auto;
+    }
+    .contact-card {
+      background-color: white;
+      border-radius: 12px;
+      padding: 20px;
+      text-align: center;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.07);
+      transition: transform 0.3s ease;
+    }
+    .contact-card:hover {
+      transform: translateY(-6px);
+    }
+    .contact-card i {
+      font-size: 36px;
+      color: #ff80a6;
+      margin-bottom: 12px;
+    }
+    .contact-card h3 {
+      margin: 10px 0 5px;
+      font-size: 20px;
+      font-weight: 600;
+      color: #0f1111;
+    }
+    .contact-card p {
+      font-size: 15px;
+      color: #555;
+      margin: 4px 0;
+    }
+    footer {
+      background-color: #131921;
+      color: #ccc;
+      padding: 30px 20px;
+      text-align: center;
+      font-size: 14px;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="logo">HealthPlus</div>
+    <nav>
+      <a href="home.html">Home</a>
+      <a href="healthtips.html">Health Tips</a>
+      <a href="services.html">Services</a>
+      <a href="diagnose.html">Diagnose Your Disease</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </header>
+
+  <div class="header">
+    <h2>Emergency Contacts</h2>
+    <p>Reach out quickly in times of need</p>
+  </div>
+
+  <div class="contacts">
+    <!-- Merged from both lists -->
+    <div class="contact-card"><i class="fas fa-ambulance"></i><h3>Ambulance</h3><p>📞 108 / 102</p><p>Available 24/7 Nationwide</p></div>
+    <div class="contact-card"><i class="fas fa-user-shield"></i><h3>Police</h3><p>📞 100</p><p>Report crimes or emergencies</p></div>
+    <div class="contact-card"><i class="fas fa-fire-extinguisher"></i><h3>Fire Brigade</h3><p>📞 101</p><p>Fire & Rescue Services</p></div>
+    <div class="contact-card"><i class="fas fa-phone"></i><h3>Disaster Management</h3><p>📞 108 / 1070</p><p>Natural disaster emergencies</p></div>
+    <div class="contact-card"><i class="fas fa-blind"></i><h3>Senior Citizen Helpline</h3><p>📞 14567</p><p>Support for elderly citizens</p></div>
+    <div class="contact-card"><i class="fas fa-female"></i><h3>Women’s Helpline</h3><p>📞 181 / 1091</p><p>Support for women safety</p></div>
+    <div class="contact-card"><i class="fas fa-child"></i><h3>Child Helpline</h3><p>📞 1098</p><p>Help for children in distress</p></div>
+    <div class="contact-card"><i class="fas fa-heart"></i><h3>Blood Bank</h3><p>📞 104</p><p>Find and request blood donations</p></div>
+    <div class="contact-card"><i class="fas fa-vial"></i><h3>Poison Control</h3><p>📞 1800-11-6117</p><p>Immediate poison response</p></div>
+    <div class="contact-card"><i class="fas fa-brain"></i><h3>Mental Health Helpline</h3><p>📞 9152987821</p><p>Emotional & mental support</p></div>
+    <div class="contact-card"><i class="fas fa-virus"></i><h3>COVID-19 Helpline</h3><p>📞 1075</p><p>Pandemic-related support</p></div>
+    <div class="contact-card"><i class="fas fa-car-crash"></i><h3>Road Accident Emergency</h3><p>📞 1073</p><p>Accident and traffic emergencies</p></div>
+    <div class="contact-card"><i class="fas fa-train"></i><h3>Railway Enquiry</h3><p>📞 139</p><p>Railway-related emergencies</p></div>
+    <div class="contact-card"><i class="fas fa-bolt"></i><h3>Electricity Emergency</h3><p>📞 1912</p><p>Report electrical hazards</p></div>
+    <div class="contact-card"><i class="fas fa-tint"></i><h3>Water Supply Emergency</h3><p>📞 1916</p><p>Water supply disruptions</p></div>
+    <div class="contact-card"><i class="fas fa-hospital-user"></i><h3>Old Age Home Medical Support</h3><p>📞 1800-180-1253</p><p>Medical aid for elderly residents</p></div>
+    <div class="contact-card"><i class="fas fa-user-md"></i><h3>Geriatric Care Helpline</h3><p>📞 1800-180-1104</p><p>Specialized senior care support</p></div>
+    <div class="contact-card"><i class="fas fa-dumbbell"></i><h3>Physiotherapy Support Line</h3><p>📞 1800-180-1001</p><p>Rehabilitation & physiotherapy</p></div>
+    <div class="contact-card"><i class="fas fa-hands-helping"></i><h3>Elder Abuse Helpline</h3><p>📞 1291</p><p>Report abuse or neglect</p></div>
+    <div class="contact-card"><i class="fas fa-user-nurse"></i><h3>Home Nursing Services</h3><p>📞 1800-180-1222</p><p>Home-based medical care</p></div>
+  </div>
+
+  <footer>
+    &copy; 2025 HealthPlus | All Rights Reserved
+  </footer>
 
 </body>
 </html>

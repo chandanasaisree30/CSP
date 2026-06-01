@@ -5,16 +5,56 @@
   <title>Nearby Hospital Locator - HealthPlus</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+
   <!-- Leaflet CSS -->
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+
   <style>
-    body {
+    * {
       margin: 0;
-      font-family: 'Segoe UI', sans-serif;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Montserrat', sans-serif;
+    }
+
+    body {
       background: linear-gradient(120deg, #fff8e7, #fbeeff);
       color: #333;
     }
 
+    /* Navbar styles from second snippet */
+    header {
+      background-color: #0f1111;
+      color: white;
+      padding: 20px 50px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .logo {
+      font-size: 28px;
+      font-weight: 700;
+      color: #ffa41c;
+    }
+
+    nav a {
+      margin: 0 15px;
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 16px;
+      transition: color 0.3s;
+    }
+
+    nav a:hover {
+      color: #ffb6c1;
+    }
+
+    /* Header Section (Locator Page) */
     .header {
       text-align: center;
       padding: 40px 20px 10px;
@@ -32,6 +72,7 @@
       margin-bottom: 30px;
     }
 
+    /* Locator Card */
     .locator-card {
       background: #ffffff;
       border: 2px solid #ffeeba;
@@ -79,11 +120,25 @@
 </head>
 <body>
 
+  <!-- Navbar -->
+  <header>
+    <div class="logo">HealthPlus</div>
+    <nav>
+      <a href="home.html">Home</a>
+      <a href="healthtips.html">Health Tips</a>
+      <a href="services.html">Services</a>
+      <a href="diagnose.html">Diagnose Your Disease</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </header>
+
+  <!-- Page Header -->
   <div class="header">
     <h1>Nearby Hospital Locator</h1>
     <p>Let HealthPlus find hospitals near you – quick, easy & free.</p>
   </div>
 
+  <!-- Locator Section -->
   <div class="locator-card">
     <button onclick="locateUser()">Locate Hospitals</button>
     <div id="map"></div>

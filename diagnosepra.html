@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Symptom Diagnosis | HealthPlus</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Montserrat', sans-serif;
+    }
+
+    body {
+      background-color: #fdf6f9;
+      color: #222;
+    }
+
+    header {
+      background-color: #0f1111;
+      color: white;
+      padding: 20px 50px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .logo {
+      font-size: 28px;
+      font-weight: 700;
+      color: #ffa41c;
+    }
+
+    nav a {
+      margin: 0 15px;
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 16px;
+      transition: color 0.3s;
+    }
+
+    nav a:hover {
+      color: #ffb6c1;
+    }
+
+    .container {
+      max-width: 700px;
+      margin-top: 60px;
+      background: linear-gradient(to right, #ffe0ec, #fff5e1);
+      padding: 40px;
+      border-radius: 15px;
+      box-shadow: 0 5px 10px rgba(0,0,0,0.05);
+    }
+
+    .symptom-box {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 15px;
+    }
+
+    .symptom-chip {
+      background-color: #ffa41c;
+      color: #fff;
+      padding: 6px 12px;
+      border-radius: 20px;
+      display: flex;
+      align-items: center;
+    }
+
+    .symptom-chip span {
+      margin-left: 8px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .checkbox-list label {
+      display: block;
+      margin-bottom: 8px;
+      cursor: pointer;
+      padding-left: 10px;
+    }
+          .checkbox-list {
+  max-height: 250px;
+  overflow-y: auto;
+  padding-right: 10px; /* optional: avoid hiding scroll bar content */
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background: #fff;
+}
+
+
+    .btn-diagnose {
+      background-color: #ffa41c;
+      color: #fff;
+      border: none;
+      padding: 12px 28px;
+      border-radius: 10px;
+      font-size: 1rem;
+      font-weight: bold;
+      transition: 0.3s ease;
+    }
+
+    .btn-diagnose:hover {
+      background-color: #ff8c00;
+      transform: scale(1.05);
+    }
+
+    .result-box {
+      margin-top: 30px;
+      padding: 20px;
+      background-color: rgba(255, 255, 255, 0.8);
+      border-left: 5px solid #ffa41c;
+      border-radius: 8px;
+    }
+
+
+
+
+    @media (max-width: 768px) {
+      header {
+        padding: 20px;
+        flex-direction: column;
+        text-align: center;
+      }
+
+      nav {
+        margin-top: 15px;
+      }
+
+      .container {
+        margin: 20px;
+        padding: 20px;
+      }
+
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">HealthPlus</div>
+    <nav>
+      <a href="home.html">Home</a>
+      <a href="healthtips.html">Health Tips</a>
+      <a href="services.html">Services</a>
+      <a href="diagnose.html">Cure Disease</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </header>
+
+  <div class="container">
+    <h2 class="text-center mb-4">Select Your Symptoms</h2>
+    
+    <div class="symptom-box" id="selectedSymptomsBox"></div>
+
+    <form id="diagnoseForm">
+
+        <input type="text" id="symptomSearch" class="form-control mb-3" placeholder="Search symptoms..." />
+
+      <div class="checkbox-list mb-3" id="symptomCheckboxes">
+
+      
+
+        <!-- Checkboxes will be injected by JavaScript -->
+      </div>
+      <button type="submit" class="btn btn-diagnose w-100">Diagnose</button>
+    </form>
+
+    <div id="result" class="result-box d-none">
+      <h5 class="mb-3">Possible Diseases with Match Percentage:</h5>
+      <ul id="resultList" class="mb-0"></ul>
+    </div>
+  </div>
+
+  <!-- <script>
+
+    const symptoms = [
+      "Fever", "Cough", "Fatigue", "Headache", "Sore Throat", "Runny Nose",
+      "Loss of Balance", "Double Vision", "Red Bumps", "Fast Heartbeat","Nausea","Vomiting"
+      ,"Diarrhea","Chest Pain","Shortness of Breath","Loss of Taste","Loss of Smell","Rash","Joint Pain",
+      "Sensitivity to Light","Dizziness","Sneezing","Abdominal Pain","Itching","Redness",
+      "Frequent Urination","Increased Thirst","Blurred Vision","Morning Stiffness","Swollen Joints","Persistent Cough"
+,"Blood in Sputum","Weight Loss","Yellow Skin","Yellow Eyes","Dark Urine","Sudden Confusion","Slurred Speech"
+,"Numbness on One Side","Night Sweats","Enlarged Lymph Nodes","Daytime Sleepiness","Difficulty Concentrating"
+,"Persistent Sadness","Loss of Interest","Anxiety","Restlessness","Rapid Heartbeat",,"Wheezing","Back Pain"
+,"Numbness in Legs","Muscle Weakness","Weight Gain","Dry Skin","Cold Intolerance","Tremor","Slow Movement",
+"Balance Issues","Sore Muscles","Difficulty Sleeping","Chills","Mucus Production","Loss of Taste or Smell"
+,"Ear Pain","Difficulty Hearing","Nasal Congestion","Watery Eyes","Sweating","High Fever",
+"Swollen Tonsils","Severe Pain","Blood in Urine","Pelvic Pain","Red Patches","Pale Skin","Crampsheartburn","Heartburnchest discomfort",
+"Chest Discomfortregurgitation","Regurgitationsour taste","Sour Tastedifficulty swallowing","Difficulty Swallowingnervousness","Nervousnessseizures"
+,"Seizures","Unconsciousness","Vision Problems","Swelling","Bloating","Gas","Irregular Periods","Acne","Heavy Periods",
+"Infertility","Widespread Pain","Sleep Disturbances","Eye Pain","Cloudy Vision","Light Sensitivity","Fading Colors",
+"Blurry Central Vision","Dark Spots","Distortion","Ringing in Ears","Ear Pressure","Spinning Sensation","Mania",
+"Hallucinations","Delusions","Disorganized Thinking","Inattention","Hyperactivity",,"Impulsivity",
+"Panic Attacks","Palpitations","Fear of Social Situations","Blushing","Trembling","Flashbacks","Nightmares",
+"Waking up Early","Low Energy","High Body Temperature","Hot Dry Skin","Shivering","Slow Breathing","Dry Mouth"
+,"Motion Sickness","Stiff Neck","Joint Swelling","Muscle Aches","Jaw Cramping","Fear of Water","Bullseye Rash"
+,"Skin Lesions","Muscle Paralysis","Drooping Eyelids","Difficulty Breathing","Ulcers","Sores","Painful Urination","Discharge","Swollen Testicles"
+,"Painful Blisters","Flu-like Symptoms","Abnormal Discharge","Painful Bumps","Abscesses","Pus Leakage","Difficulty Speaking"
+,"Electric-Shock Pain","Spasms","Urge to Move Legs","Tingling","Sleep Disruption","Cold Fingers","Color Change in Skin",
+,"Numbness","Jaw Pain","Clicking Sound","Enlarged Hands","Coarse Facial Features","Stretch Marks","Darkened Skin"
+,"Low Blood Pressure","Tall Stature","Long Limbs","Heart Murmurs","Joint Hypermobility","Skin that Stretches"
+,"Easy Bruising","Vision Loss","Developmental Delay","Musty Odor","Joint Bleeding","Prolonged Bleeding","Pain Episodes"
+,"Enlarged Spleen","Kayser-Fleischer Rings","Sudden Fever","Weakness","Paralysis","Facial Droop","Drooling"
+,"Inability to Close Eye","Ear Ringing","Leg Pain","Cramping","Relieved by Rest","Cold Feet","Fainting","Sharp Chest Pain","Bulging Veins"
+,"Protein in Urine","Painless Bleeding","Preterm Labor","Uterine Tenderness","Vaginal Bleeding","Shoulder Pain"
+,"Delayed Growth","Bowed Legs","Bleeding Gums","Bruising","Dry Eyes","Blurry Vision","Neck Swelling","Hoarseness","Dermatitis"
+,"Dementia","Enlarged Head","Irritability","Spinal Bulge","Bowel Problems","Tics","Blinking","Grunting","Muscle Twitching"
+,"Butterfly Rash","Mouth Sores","Genital Sores","Eye Inflammation","Stiffness","Bone Pain","Deformities","Fragile Bones"
+,"Frequent Fractures","Short Stature","Neck Lump","Trouble Swallowing","Social Challenges","Repetitive Behavior","Speech Delay"
+,"Distinct Facial Features","Poor Muscle Tone","Small Testes","Low Testosterone","Light Eyes","Difficulty Distinguishing Colors"
+,"Inability to See Red/Green","Poor Color Perception","Proteinuria","Swollen Ankles","Foamy Urine","Bladder Pressure"
+,"Cloudy Urine","Flank Pain","Severe Side Pain","Urinary Problems","Weak Urine Stream","Dribbling","Difficulty Maintaining Erection","Low Libido","Performance Anxiety"
+,"Difficulty Conceiving","Lump in Breast","Nipple Discharge","Skin Changes","Lump in Testicle","Heaviness","Dull Ache","Upper Abdominal Pain","Right Upper Pain"
+,"Rectal Bleeding","Pain During Bowel Movements","Sharp Anal Pain","Spasms During Defecation","Mild Cough","Itchy Throat"
+,"Dry Cough","Persistent Dry Mouth","Memory Problems","Vision Changes","Abdominal Bloating","Excessive Sweating","Heat Intolerance","Flaky Skin"
+,"Lower Back Pain","Trouble Bending","Sensitivity to Sound","Jaw Discomfort","Lower Abdominal Pain","Constipation","Bloody Diarrhea"
+,"Scalp Tenderness","Burning Pain","Jaw Locking","Muscle Wasting","Trouble Walking","Weak Limbs","Abnormal Heart Rhythm"
+,"Itching (Generalized)","Throat Pain","White Patches","Acid Taste","Tight Chest","Muscle Spasms","Skin Ulcers","Loss of Balance","Double Vision"
+,"Red Bumps","Fast Heartbeat"
+    ];
+
+
+ 
+
+    const diseaseData = {
+      "Flu": ["fever", "cough", "fatigue", "sore throat", "runny nose"],
+    "COVID-19": ["fever", "cough", "fatigue", "loss of taste", "loss of smell", "shortness of breath"],
+    "Food Poisoning": ["nausea", "vomiting", "diarrhea", "fatigue"],
+    "Dengue": ["fever", "headache", "rash", "joint pain", "fatigue"],
+    "Asthma": ["shortness of breath", "cough", "chest pain", "wheezing", "chest tightness"],
+    "Migraine": ["headache", "nausea", "vomiting", "sensitivity to light"],
+    "Typhoid": ["fever", "fatigue", "headache", "diarrhea", "abdominal pain"],
+    "Common Cold": ["sneezing", "runny nose", "sore throat", "cough", "fatigue"],
+    "Influenza (Flu)": ["fever", "chills", "muscle aches", "fatigue", "cough", "headache"],
+    "Tuberculosis": ["persistent cough", "blood in sputum", "weight loss", "night sweats", "chest pain"],
+    "Diabetes": ["frequent urination", "increased thirst", "blurred vision", "fatigue", "weight loss"],
+    "Rheumatoid Arthritis": ["joint pain", "swollen joints", "fatigue", "morning stiffness"],
+    "Hepatitis": ["yellow skin", "yellow eyes", "dark urine", "fatigue", "abdominal pain"],
+    "Stroke": ["sudden confusion", "slurred speech", "numbness on one side", "vision problems", "facial droop"],
+    "Depression": ["persistent sadness", "loss of interest", "fatigue", "sleep disturbances", "low energy"],
+    "Anxiety Disorder": ["anxiety", "restlessness", "rapid heartbeat", "difficulty concentrating", "sweating"],
+    "Pneumonia": ["fever", "cough", "shortness of breath", "chest pain", "fatigue"],
+    "Dengue Fever": ["fever", "rash", "joint pain", "muscle aches", "headache"],
+    "Urinary Tract Infection (UTI)": ["painful urination", "frequent urination", "pelvic pain", "cloudy urine", "fever"],
+  "Malaria": ["fever", "chills", "sweating", "headache", "nausea", "vomiting"],
+  "Chickenpox": ["rash", "fever", "tiredness", "loss of appetite", "itchy blisters"],
+  "Measles": ["fever", "cough", "runny nose", "rash", "red eyes"],
+  "Hypertension": ["headache", "dizziness", "blurred vision", "chest pain", "shortness of breath"],
+  "Heart Attack": ["chest pain", "shortness of breath", "nausea", "cold sweat", "lightheadedness"],
+  "Appendicitis": ["abdominal pain", "loss of appetite", "nausea", "vomiting", "fever"],
+  "Gastritis": ["abdominal pain", "nausea", "vomiting", "bloating", "loss of appetite"],
+  "Sinusitis": ["facial pain", "headache", "nasal congestion", "runny nose", "cough"],
+  "Thyroid Disorder": ["fatigue", "weight changes", "dry skin", "hair thinning", "depression"],
+  "Anemia": ["fatigue", "pale skin", "shortness of breath", "dizziness", "cold hands and feet"]
+
+    };
+
+    const checkboxContainer = document.getElementById("symptomCheckboxes");
+    const selectedBox = document.getElementById("selectedSymptomsBox");
+
+    const selectedSymptoms = new Set();
+
+    function renderCheckboxes() {
+      checkboxContainer.innerHTML = "";
+      symptoms.forEach(symptom => {
+        const id = symptom.toLowerCase().replace(/\s/g, '-');
+        checkboxContainer.innerHTML += `
+          <label>
+            <input type="checkbox" value="${symptom}" id="${id}"> ${symptom}
+          </label>
+        `;
+      });
+    }
+
+    function renderSelectedChips() {
+      selectedBox.innerHTML = "";
+      selectedSymptoms.forEach(symptom => {
+        const chip = document.createElement("div");
+        chip.className = "symptom-chip";
+        chip.innerHTML = `${symptom} <span onclick="removeSymptom('${symptom}')">&times;</span>`;
+        selectedBox.appendChild(chip);
+      });
+    }
+
+    function removeSymptom(symptom) {
+      selectedSymptoms.delete(symptom);
+      document.getElementById(symptom.toLowerCase().replace(/\s/g, '-')).checked = false;
+      renderSelectedChips();
+    }
+
+    // Event delegation for checkboxes
+    checkboxContainer.addEventListener("change", e => {
+      if (e.target.type === "checkbox") {
+        const val = e.target.value;
+        if (e.target.checked) {
+          selectedSymptoms.add(val);
+        } else {
+          selectedSymptoms.delete(val);
+        }
+        renderSelectedChips();
+      }
+    });
+
+    renderCheckboxes();
+
+    document.getElementById("diagnoseForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+      const selectedArray = Array.from(selectedSymptoms).map(s => s.toLowerCase());
+      const resultList = document.getElementById("resultList");
+      resultList.innerHTML = "";
+
+      const matchesArray = [];
+
+      for (const disease in diseaseData) {
+        const symptoms = diseaseData[disease];
+        const matches = symptoms.filter(symptom => selectedArray.includes(symptom));
+        const matchPercent = Math.round((matches.length / symptoms.length) * 100);
+
+        if (matches.length > 0) {
+          matchesArray.push({
+            disease,
+            matchPercent,
+            matchedSymptoms: matches
+          });
+        }
+      }
+
+      if (matchesArray.length === 0) {
+        resultList.innerHTML = `<li>No matching diseases found. Please check your symptoms.</li>`;
+      } else {
+        matchesArray.sort((a, b) => b.matchPercent - a.matchPercent);
+        matchesArray.slice(0, 3).forEach(({ disease, matchPercent, matchedSymptoms }) => {
+          const li = document.createElement("li");
+          li.innerHTML = `<strong>${disease}</strong>: ${matchPercent}% match (${matchedSymptoms.join(", ")})`;
+          resultList.appendChild(li);
+        });
+      }
+
+      document.getElementById("result").classList.remove("d-none");
+    });
+  </script>-->
+
+
+
+  <script>
+  const symptoms = [
+      "Fever", "Cough", "Fatigue", "Headache", "Sore Throat", "Runny Nose",
+      "Loss of Balance", "Double Vision", "Red Bumps", "Fast Heartbeat","Nausea","Vomiting"
+      ,"Diarrhea","Chest Pain","Shortness of Breath","Loss of Taste","Loss of Smell","Rash","Joint Pain",
+      "Sensitivity to Light","Dizziness","Sneezing","Abdominal Pain","Itching","Redness",
+      "Frequent Urination","Increased Thirst","Blurred Vision","Morning Stiffness","Swollen Joints","Persistent Cough"
+,"Blood in Sputum","Weight Loss","Yellow Skin","Yellow Eyes","Dark Urine","Sudden Confusion","Slurred Speech"
+,"Numbness on One Side","Night Sweats","Enlarged Lymph Nodes","Daytime Sleepiness","Difficulty Concentrating"
+,"Persistent Sadness","Loss of Interest","Anxiety","Restlessness","Rapid Heartbeat",,"Wheezing","Back Pain"
+,"Numbness in Legs","Muscle Weakness","Weight Gain","Dry Skin","Cold Intolerance","Tremor","Slow Movement",
+"Balance Issues","Sore Muscles","Difficulty Sleeping","Chills","Mucus Production","Loss of Taste or Smell"
+,"Ear Pain","Difficulty Hearing","Nasal Congestion","Watery Eyes","Sweating","High Fever",
+"Swollen Tonsils","Severe Pain","Blood in Urine","Pelvic Pain","Red Patches","Pale Skin","Crampsheartburn","Heartburnchest discomfort",
+"Chest Discomfortregurgitation","Regurgitationsour taste","Sour Tastedifficulty swallowing","Difficulty Swallowingnervousness","Nervousnessseizures"
+,"Seizures","Unconsciousness","Vision Problems","Swelling","Bloating","Gas","Irregular Periods","Acne","Heavy Periods",
+"Infertility","Widespread Pain","Sleep Disturbances","Eye Pain","Cloudy Vision","Light Sensitivity","Fading Colors",
+"Blurry Central Vision","Dark Spots","Distortion","Ringing in Ears","Ear Pressure","Spinning Sensation","Mania",
+"Hallucinations","Delusions","Disorganized Thinking","Inattention","Hyperactivity",,"Impulsivity",
+"Panic Attacks","Palpitations","Fear of Social Situations","Blushing","Trembling","Flashbacks","Nightmares",
+"Waking up Early","Low Energy","High Body Temperature","Hot Dry Skin","Shivering","Slow Breathing","Dry Mouth"
+,"Motion Sickness","Stiff Neck","Joint Swelling","Muscle Aches","Jaw Cramping","Fear of Water","Bullseye Rash"
+,"Skin Lesions","Muscle Paralysis","Drooping Eyelids","Difficulty Breathing","Ulcers","Sores","Painful Urination","Discharge","Swollen Testicles"
+,"Painful Blisters","Flu-like Symptoms","Abnormal Discharge","Painful Bumps","Abscesses","Pus Leakage","Difficulty Speaking"
+,"Electric-Shock Pain","Spasms","Urge to Move Legs","Tingling","Sleep Disruption","Cold Fingers","Color Change in Skin",
+,"Numbness","Jaw Pain","Clicking Sound","Enlarged Hands","Coarse Facial Features","Stretch Marks","Darkened Skin"
+,"Low Blood Pressure","Tall Stature","Long Limbs","Heart Murmurs","Joint Hypermobility","Skin that Stretches"
+,"Easy Bruising","Vision Loss","Developmental Delay","Musty Odor","Joint Bleeding","Prolonged Bleeding","Pain Episodes"
+,"Enlarged Spleen","Kayser-Fleischer Rings","Sudden Fever","Weakness","Paralysis","Facial Droop","Drooling"
+,"Inability to Close Eye","Ear Ringing","Leg Pain","Cramping","Relieved by Rest","Cold Feet","Fainting","Sharp Chest Pain","Bulging Veins"
+,"Protein in Urine","Painless Bleeding","Preterm Labor","Uterine Tenderness","Vaginal Bleeding","Shoulder Pain"
+,"Delayed Growth","Bowed Legs","Bleeding Gums","Bruising","Dry Eyes","Blurry Vision","Neck Swelling","Hoarseness","Dermatitis"
+,"Dementia","Enlarged Head","Irritability","Spinal Bulge","Bowel Problems","Tics","Blinking","Grunting","Muscle Twitching"
+,"Butterfly Rash","Mouth Sores","Genital Sores","Eye Inflammation","Stiffness","Bone Pain","Deformities","Fragile Bones"
+,"Frequent Fractures","Short Stature","Neck Lump","Trouble Swallowing","Social Challenges","Repetitive Behavior","Speech Delay"
+,"Distinct Facial Features","Poor Muscle Tone","Small Testes","Low Testosterone","Light Eyes","Difficulty Distinguishing Colors"
+,"Inability to See Red/Green","Poor Color Perception","Proteinuria","Swollen Ankles","Foamy Urine","Bladder Pressure"
+,"Cloudy Urine","Flank Pain","Severe Side Pain","Urinary Problems","Weak Urine Stream","Dribbling","Difficulty Maintaining Erection","Low Libido","Performance Anxiety"
+,"Difficulty Conceiving","Lump in Breast","Nipple Discharge","Skin Changes","Lump in Testicle","Heaviness","Dull Ache","Upper Abdominal Pain","Right Upper Pain"
+,"Rectal Bleeding","Pain During Bowel Movements","Sharp Anal Pain","Spasms During Defecation","Mild Cough","Itchy Throat"
+,"Dry Cough","Persistent Dry Mouth","Memory Problems","Vision Changes","Abdominal Bloating","Excessive Sweating","Heat Intolerance","Flaky Skin"
+,"Lower Back Pain","Trouble Bending","Sensitivity to Sound","Jaw Discomfort","Lower Abdominal Pain","Constipation","Bloody Diarrhea"
+,"Scalp Tenderness","Burning Pain","Jaw Locking","Muscle Wasting","Trouble Walking","Weak Limbs","Abnormal Heart Rhythm"
+,"Itching (Generalized)","Throat Pain","White Patches","Acid Taste","Tight Chest","Muscle Spasms","Skin Ulcers","Loss of Balance","Double Vision"
+,"Red Bumps","Fast Heartbeat"
+    ];
+
+
+ const diseaseData = {
+      "Flu": ["fever", "cough", "fatigue", "sore throat", "runny nose"],
+    "COVID-19": ["fever", "cough", "fatigue", "loss of taste", "loss of smell", "shortness of breath"],
+    "Food Poisoning": ["nausea", "vomiting", "diarrhea", "fatigue"],
+    "Dengue": ["fever", "headache", "rash", "joint pain", "fatigue"],
+    "Asthma": ["shortness of breath", "cough", "chest pain", "wheezing", "chest tightness"],
+    "Migraine": ["headache", "nausea", "vomiting", "sensitivity to light"],
+    "Typhoid": ["fever", "fatigue", "headache", "diarrhea", "abdominal pain"],
+    "Common Cold": ["sneezing", "runny nose", "sore throat", "cough", "fatigue"],
+    "Influenza (Flu)": ["fever", "chills", "muscle aches", "fatigue", "cough", "headache"],
+    "Tuberculosis": ["persistent cough", "blood in sputum", "weight loss", "night sweats", "chest pain"],
+    "Diabetes": ["frequent urination", "increased thirst", "blurred vision", "fatigue", "weight loss"],
+    "Rheumatoid Arthritis": ["joint pain", "swollen joints", "fatigue", "morning stiffness"],
+    "Hepatitis": ["yellow skin", "yellow eyes", "dark urine", "fatigue", "abdominal pain"],
+    "Stroke": ["sudden confusion", "slurred speech", "numbness on one side", "vision problems", "facial droop"],
+    "Depression": ["persistent sadness", "loss of interest", "fatigue", "sleep disturbances", "low energy"],
+    "Anxiety Disorder": ["anxiety", "restlessness", "rapid heartbeat", "difficulty concentrating", "sweating"],
+    "Pneumonia": ["fever", "cough", "shortness of breath", "chest pain", "fatigue"],
+    "Dengue Fever": ["fever", "rash", "joint pain", "muscle aches", "headache"],
+    "Urinary Tract Infection (UTI)": ["painful urination", "frequent urination", "pelvic pain", "cloudy urine", "fever"],
+  "Malaria": ["fever", "chills", "sweating", "headache", "nausea", "vomiting"],
+  "Chickenpox": ["rash", "fever", "tiredness", "loss of appetite", "itchy blisters"],
+  "Measles": ["fever", "cough", "runny nose", "rash", "red eyes"],
+  "Hypertension": ["headache", "dizziness", "blurred vision", "chest pain", "shortness of breath"],
+  "Heart Attack": ["chest pain", "shortness of breath", "nausea", "cold sweat", "lightheadedness"],
+  "Appendicitis": ["abdominal pain", "loss of appetite", "nausea", "vomiting", "fever"],
+  "Gastritis": ["abdominal pain", "nausea", "vomiting", "bloating", "loss of appetite"],
+  "Sinusitis": ["facial pain", "headache", "nasal congestion", "runny nose", "cough"],
+  "Thyroid Disorder": ["fatigue", "weight changes", "dry skin", "hair thinning", "depression"],
+  "Anemia": ["fatigue", "pale skin", "shortness of breath", "dizziness", "cold hands and feet"]
+
+    };
+
+  const checkboxContainer = document.getElementById("symptomCheckboxes");
+  const selectedBox = document.getElementById("selectedSymptomsBox");
+  const selectedSymptoms = new Set();
+  const searchInput = document.getElementById("symptomSearch"); // 🔍 Search input
+
+  function renderCheckboxes(filter = "") {
+    checkboxContainer.innerHTML = "";
+    const filteredSymptoms = symptoms.filter(symptom =>
+      symptom.toLowerCase().includes(filter.toLowerCase())
+    );
+
+    filteredSymptoms.forEach(symptom => {
+      const id = symptom.toLowerCase().replace(/\s/g, '-');
+      const isChecked = selectedSymptoms.has(symptom) ? "checked" : "";
+      checkboxContainer.innerHTML += `
+        <label>
+          <input type="checkbox" value="${symptom}" id="${id}" ${isChecked}> ${symptom}
+        </label>
+      `;
+    });
+  }
+
+  function renderSelectedChips() {
+    selectedBox.innerHTML = "";
+    selectedSymptoms.forEach(symptom => {
+      const chip = document.createElement("div");
+      chip.className = "symptom-chip";
+      chip.innerHTML = `${symptom} <span onclick="removeSymptom('${symptom}')">&times;</span>`;
+      selectedBox.appendChild(chip);
+    });
+  }
+
+  function removeSymptom(symptom) {
+    selectedSymptoms.delete(symptom);
+    document.getElementById(symptom.toLowerCase().replace(/\s/g, '-')).checked = false;
+    renderSelectedChips();
+  }
+
+  checkboxContainer.addEventListener("change", e => {
+    if (e.target.type === "checkbox") {
+      const val = e.target.value;
+      if (e.target.checked) {
+        selectedSymptoms.add(val);
+      } else {
+        selectedSymptoms.delete(val);
+      }
+      renderSelectedChips();
+    }
+  });
+
+  searchInput.addEventListener("input", () => {
+    renderCheckboxes(searchInput.value);
+  });
+
+  renderCheckboxes(); // Initial render
+
+  document.getElementById("diagnoseForm").addEventListener("submit", function (e) {
+    e.preventDefault();
+    const selectedArray = Array.from(selectedSymptoms).map(s => s.toLowerCase());
+    const resultList = document.getElementById("resultList");
+    resultList.innerHTML = "";
+
+    const matchesArray = [];
+
+    for (const disease in diseaseData) {
+      const symptoms = diseaseData[disease];
+      const matches = symptoms.filter(symptom => selectedArray.includes(symptom));
+      const matchPercent = Math.round((matches.length / symptoms.length) * 100);
+
+      if (matches.length > 0) {
+        matchesArray.push({
+          disease,
+          matchPercent,
+          matchedSymptoms: matches
+        });
+      }
+    }
+
+    if (matchesArray.length === 0) {
+      resultList.innerHTML = `<li>No matching diseases found. Please check your symptoms.</li>`;
+    } else {
+      matchesArray.sort((a, b) => b.matchPercent - a.matchPercent);
+      matchesArray.slice(0, 3).forEach(({ disease, matchPercent, matchedSymptoms }) => {
+        const li = document.createElement("li");
+        li.innerHTML = `<strong>${disease}</strong>: ${matchPercent}% match (${matchedSymptoms.join(", ")})`;
+        resultList.appendChild(li);
+      });
+    }
+
+    document.getElementById("result").classList.remove("d-none");
+  });
+</script>
+
+</body>
+</html> 
+
